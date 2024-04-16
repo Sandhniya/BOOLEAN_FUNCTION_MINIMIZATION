@@ -32,9 +32,11 @@ Hardware – PCs, Cyclone II , USB flasher
 
 
 **Program:**
-
-/* Program to implement the given logic function and to verify its operations in quartus using Verilog programming. 
-module Boolean_min(a,b,c,d,w,x,y,z,f1,f2);
+//Program to compute the function f1=a'b'c'd'+ac'd'+b'cd'+a'bcd+bc'd
+//f2=xy'z+x'y'z+w'xy+wx'y+wxy
+// simplify the logic using Boolean minimization/k map 
+//compute f2 and write verilog code for f2 as like f1
+module BMf1f2(a,b,c,d,w,x,y,z,f1,f2);
 input a,b,c,d,w,x,y,z;
 output f1,f2;
 wire adash,bdash,cdash,ddash,ydash,p,q,r,s,t,u;
@@ -46,9 +48,10 @@ and(p,bdash,ddash);
 and(q,adash,b,d);
 and(r,a,b,cdash);
 or(f1,p,q,r);
+//type code for f2 as like f1
 not(ydash,y);
-and(s,ydash,z);
-and(t,x,y);
+and(s,x,y);
+and(t,ydash,z);
 and(u,w,y);
 or(f2,s,t,u);
 endmodule
@@ -59,15 +62,18 @@ RegisterNumber:212223220093
 
 
 **RTL realization**
-![Screenshot 2024-03-24 200925](https://github.com/Sandhniya/BOOLEAN_FUNCTION_MINIMIZATION/assets/151395890/735f5bd3-cf3b-4c34-b2fb-f50eafa8de7d)
+![Screenshot 2024-04-16 101303](https://github.com/Sandhniya/BOOLEAN_FUNCTION_MINIMIZATION/assets/151395890/d6fb0d81-1ea9-46bb-9acd-df454505545d)
+
 
 
 **Output:**
-![Screenshot 2024-03-24 200908](https://github.com/Sandhniya/BOOLEAN_FUNCTION_MINIMIZATION/assets/151395890/88ef005e-96dc-4f77-9439-1a922ea69501)
+![Screenshot 2024-04-16 101320](https://github.com/Sandhniya/BOOLEAN_FUNCTION_MINIMIZATION/assets/151395890/df2575cc-9386-4552-990d-f1ce1759623c)
+
 
 
 **RTL**
-![Screenshot 2024-03-24 200936](https://github.com/Sandhniya/BOOLEAN_FUNCTION_MINIMIZATION/assets/151395890/a881cd5b-0761-4f38-b95c-51f1e0358077)
+
+![Screenshot 2024-04-16 101344](https://github.com/Sandhniya/BOOLEAN_FUNCTION_MINIMIZATION/assets/151395890/694ff67d-5de3-44f8-b1ad-8f1f20120c68)
 
 
 **Timing Diagram**
